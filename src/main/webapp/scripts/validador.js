@@ -5,19 +5,17 @@
     var regex = new RegExp('^\\(?[0-9]{2}\\)? ?(([1-9]{1}[0-9]{3}-?[0-9]{4})|(9[1-9]{4}-?[0-9]{4}))$');
     return regex.test(phone);
 }
+
 function validEmail(email) {
   var regex = /\S+@\S+\.\S+/;
   return regex.test(email);
 }
 
-
 function validarForm(){
 	let nome = frmContato.nome.value
 	let fone = frmContato.fone.value
 	let email = frmContato.email.value
-	//let email = frmContato.email.value
-	console.log("Chegou")
-	
+
 	if(nome.trim() === ""){
 		alert('Preencha o campo nome')
 		frmContato.nome.focus

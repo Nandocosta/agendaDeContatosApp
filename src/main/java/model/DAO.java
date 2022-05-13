@@ -6,16 +6,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DAO.
+ */
 public class DAO {
-	/** Módulo de conexão**/
-	//Parametro de conexão
 	
+	/** The driver. */
 	private String driver = "com.mysql.cj.jdbc.Driver";
+	
+	/** The url. */
 	private String url = "jdbc:mysql://localhost/dbagenda?useTimezone=true&serverTimezone=UTC";
 	
+	/** The user. */
 	private String user = "root";
+	
+	/** The password. */
 	private String password = "";
 	
+	/**
+	 * Conectar.
+	 *
+	 * @return the connection
+	 */
 	private Connection conectar() {
 		Connection con = null;
 		try {
@@ -28,8 +41,12 @@ public class DAO {
 		}
 				
 	}
-	
-	/** CRUD create **/
+
+	/**
+	 * Inserir contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void inserirContato( JavaBeans contato ) {
 		String create = "insert into contatos (nome,fone,email) values(?,?,?)";
 		try {
@@ -45,12 +62,14 @@ public class DAO {
 			System.out.println(e);
 		}
 	}
-	
-	/** CRUD read **/
-	public ArrayList<JavaBeans> listarContatos(){
-		
-		ArrayList<JavaBeans> contatos = new ArrayList<>();
-		
+
+	/**
+	 * Listar contatos.
+	 *
+	 * @return the array list
+	 */
+	public ArrayList<JavaBeans> listarContatos(){	
+		ArrayList<JavaBeans> contatos = new ArrayList<>();	
 		String read = "select * from contatos order by nome";
 		try {
 			Connection con = conectar();
@@ -71,8 +90,12 @@ public class DAO {
 			return null;
 		}
 	}
-	
-	/** CRUD update **/
+
+	/**
+	 * Selecionar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void selecionarContato(JavaBeans contato) {
 		String read2 = "select * from contatos where idcon=?";
 		try {
@@ -92,6 +115,11 @@ public class DAO {
 		}
 	}
 	
+	/**
+	 * Alterar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void alterarContato(JavaBeans contato) {
 		String editar = "update contatos set nome=?,fone=?,email=? where idcon=?";
 		try {
@@ -107,8 +135,12 @@ public class DAO {
 			System.out.println(e);
 		}
 	}
-	
-	/** CRUD deletar **/
+
+	/**
+	 * Deletar contato.
+	 *
+	 * @param contato the contato
+	 */
 	public void deletarContato(JavaBeans contato) {
 		String delete = "delete from contatos where idcon=?";
 		try {
